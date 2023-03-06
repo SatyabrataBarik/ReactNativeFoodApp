@@ -1,0 +1,65 @@
+[
+  {
+    "id": "Food",
+    "image": "https://e1.pngegg.com/pngimages/621/910/png-clipart-food-2-food-thumbnail.png",
+    "product": [
+      {
+        "id": "Udipi's Upahar",
+        "Pname":"Veg Meal",
+        "image": "https://img.restaurantguru.com/ra8b-Udipis-Upahar-Manikonda-dessert.jpg",
+        "Price": 40
+      },
+      {
+        "id": "Mehefil",
+        "Pname":"Biriyani",
+        "image": "https://images.livemint.com/img/2023/01/13/600x338/Kolkata_Biryani_1673628587318_1673628598499_1673628598499.jpg",
+        "Price": 120
+      },
+      {
+        "id": "Sandar",
+        "Pname":"chaomin",
+        "image": "https://imagesvc.meredithcorp.io/v3/mm/image?url=https%3A%2F%2Fstatic.onecms.io%2Fwp-content%2Fuploads%2Fsites%2F44%2F2022%2F03%2F29%2Fpasta-power-tout.jpg",
+        "Price": 60
+      },
+      {
+        "id": "Traditional Food",
+        "Pname":"Traditional Food",
+        "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b9/HaluskyzoZiaru.JPG/320px-HaluskyzoZiaru.JPG",
+        "Price":90
+      },
+      {
+        "id": "Apple",
+        "Pname":"Kashmir Apple",
+        "image": "https://5.imimg.com/data5/WA/NV/LI/SELLER-52971039/apple-indian-500x500.jpg",
+        "Price": 40
+      },
+    ]
+  },
+  {
+    "id": "Instamart",
+    "image": "https://w7.pngwing.com/pngs/510/1005/png-transparent-colgate-maxfresh-toothpaste-tooth-whitening-tooth-brushing-toothpaste-miscellaneous-tooth-decay-gel.png",
+    "product": [
+      {
+        "id": "Dabur",
+        "Pname":"dabur toothpaste",
+        "image": "https://5.imimg.com/data5/SELLER/Default/2021/6/JG/BS/NO/131147296/dabur-red-toothpaste-1000x1000.jpg",
+        "Price": 85
+      },
+    ]
+  },
+  {
+    "id": "Dineout",
+    "image": "https://image.similarpng.com/very-thumbnail/2022/02/Whole-pizza-plate-on-the-human-hand-support-isolated-on-transparent-background-PNG.png",
+    "product": []
+  },
+  {
+    "id": "Genie",
+    "image": "https://png.pngtree.com/element_our/png/20181031/cartoon-christmas-gift-box-element-png_224598.jpg",
+    "product": []
+  },
+  {
+    "id": "Meat Delivery",
+    "image": "https://t3.ftcdn.net/jpg/01/84/14/54/360_F_184145408_AJ8fpPSNhlAWWDeccmpru57nPIqbxWxx.jpg",
+    "product": []
+  }
+]
