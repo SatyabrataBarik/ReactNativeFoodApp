@@ -32,13 +32,15 @@ const ProductList = ({route, navigation}) => {
           </Pressable>
           <Text style={{color: 'black',marginLeft:95}}>Product List </Text>
         </View>
-        <ScrollView>
+        <ScrollView >
+          <View>
           <FlatList
             data={data}
             renderItem={({item}) => {
               return <ProductIterable item={item} navigation={navigation} />;
             }}
           />
+          </View>
         </ScrollView>
         
       </View>

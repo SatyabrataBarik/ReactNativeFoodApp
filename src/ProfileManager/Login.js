@@ -1,4 +1,4 @@
-import {View, Text, StyleSheet, Button, ImageBackground} from 'react-native';
+import {View, Text, StyleSheet, Button, ImageBackground, Alert} from 'react-native';
 import {useContext, useState} from 'react';
 import {TextInput, TouchableOpacity} from 'react-native-gesture-handler';
 import LoginContext from '../Context/Login/LoginContext';
@@ -7,37 +7,36 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 const Login = ({navigation}) => {
   const [userEmail, SetUserEmail] = useState('');
   const [pass, SetPass] = useState('');
-  const [errors, setErrors] = useState('');
+  const [isLogin,setIsLogin]=useState(false)
 
   const handleSignup = navigation => {
     navigation.navigate('signup');
   };
+ 
   const getItem = async () => {
-    try {
-      const jsonFile = await AsyncStorage.getItem('userDetails');
-      jsonFile != null ? JSON.parse(jsonFile) : null;
-      let user = JSON.parse(jsonFile);
-      //  console.log('user.userEmail', user.userEmail)
-      if (userEmail == '' || user == '') {
-        setErrors(' All above field are Mandatory');
-      } else if (user.userEmail == userEmail && user.userPassword == pass) {
-        console.log('jsonFile', jsonFile)
-        navigation.navigate('home');
-        setErrors('');
-         let values=true
-        try {
-           const value=JSON.stringify(values)
-          await AsyncStorage.setItem('login', value);
-        } catch (e) {
-          console.log('e', e)
-        }
-      } else {
-        setErrors('Your user id or password is incorrect');
-      }
-    } catch (error) {
-      console.log('error', error)
+    let allUsersDetails = await AsyncStorage.getItem('allUsers');
+    allUsersDetails != null ? JSON.parse(allUsersDetails) : null;
+    let userData=JSON.parse(allUsersDetails)
+    console.log('allUsersDetails', userData);
+  let isPresent=  userData.find((userInfo)=>userInfo.userEmail===userEmail&&userInfo.userPassword===pass)
+    if(isPresent){
+      Alert.alert("Welcome")
+      setIsLogin(true)
+       setItem();
     }
-  };
+  }
+  const setItem=async()=>{
+  try {
+    let login=JSON.stringify(isLogin)
+     await AsyncStorage.setItem('loginUser',login)
+     let UsersDetails = await AsyncStorage.getItem('loginUser');
+     UsersDetails != null ? JSON.parse(UsersDetails) : null;
+     console.log('first', UsersDetails)
+    navigation.navigate('home')
+  } catch (error) {
+   
+  }s
+}
 
   return (
     <ImageBackground
@@ -62,7 +61,7 @@ const Login = ({navigation}) => {
           />
         </View>
         <View style={{marginTop: 12}}>
-          <Text style={{color: 'red'}}>{errors}</Text>
+          {/* <Text style={{color: 'red'}}>{errors}</Text> */}
         </View>
         <View style={Styled.btn}>
           <Button title="Login" onPress={getItem} />

@@ -93,7 +93,9 @@ const SignUp = ({navigation}) => {
         try {
           const allUsers = JSON.stringify(usersDB);
           await AsyncStorage.setItem('allUsers', allUsers);
+          navigation.navigate('login')
           alert('user data saved');
+
         } catch (e) {
           console.error();
         }

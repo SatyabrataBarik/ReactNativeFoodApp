@@ -1,4 +1,4 @@
-import {View, Text, Image, Pressable, Geolocation, Button} from 'react-native';
+import {View, Text, Image, Pressable, ScrollView} from 'react-native';
 import {useRef, useState, useContext} from 'react';
 import Ionicons from 'react-native-vector-icons/dist/Ionicons';
 import Entypo from 'react-native-vector-icons/dist/Entypo';
@@ -63,7 +63,7 @@ const SinglePage = ({route, navigation}) => {
           <Entypo name="chat" size={35} color={'green'} />
         </View>
       </View>
-
+   <ScrollView>
       <View style={{alignItems: 'center'}}>
         <Image
           source={{uri: item.image}}
@@ -173,6 +173,7 @@ const SinglePage = ({route, navigation}) => {
           </Text>
         </TouchableNativeFeedback>
       </View>
+      </ScrollView>
     </View>
   );
 };

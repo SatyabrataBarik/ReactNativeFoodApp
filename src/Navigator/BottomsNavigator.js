@@ -12,11 +12,12 @@ const Tab = createBottomTabNavigator();
 
 const BottomsNavigator = () => {
   return (
-    <Tab.Navigator initialRouteName="home">
+    <Tab.Navigator initialRouteName="home"  >
       <Tab.Screen
         name="home"
         component={Home}
         options={{
+          tabBarLabel:'',
           headerShown: false,
           tabBarIcon: ({color, size}) => (
             <AntDesign name="home" color={color} size={size} />
@@ -27,6 +28,7 @@ const BottomsNavigator = () => {
         name="searchScreen"
         component={SearchScreen }
         options={{
+          tabBarLabel:'',
                     headerShown: false,
           tabBarIcon: ({color, size}) => (
             <AntDesign name="search1" color={color} size={size} />
@@ -38,6 +40,7 @@ const BottomsNavigator = () => {
         name="Like"
         component={Like}
         options={{
+          tabBarLabel:'',
           headerShown: false,
           tabBarIcon: ({color, size}) => (
             <AntDesign name="heart" color={color} size={size} />
@@ -48,6 +51,7 @@ const BottomsNavigator = () => {
         name="profile"
         component={Profile}
         options={{
+          tabBarLabel:'',
           headerShown: false,
           tabBarIcon: ({color, size}) => (
             <Ionicons name="person" color={color} size={size} />

@@ -4,39 +4,50 @@ import Login from '../ProfileManager/Login';
 import LoginContext from '../Context/Login/LoginContext';
 import ProfileSection from '../ProfileManager/ProfileSection';
 import SignUp from '../ProfileManager/SignUp';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 const Profile = ({navigation}) => {
-  const [login,setLogin]=useState(false)
-  // const [login,setLogin]=useState()
-  useEffect(() => {
-   
-    _retrieveData()
-    
-    }
-  ,)
-  
-  _retrieveData = async () => {
-    try {
-      const value = await AsyncStorage.getItem('login');
-      
-      console.log('value1', value)
-      // if (value !== null) {
-      //   // We have data!!
-      //  let log= JSON.parse(value);
-      //  console.log('log', log)
-      //   setLogin()
-      // }
-    } catch (error) {
-      // Error retrieving data
-      console.log('error', error)
-    }
-  };
+  const [isLogin,setIsLogin]=useState(false)
+  const [isLogout,setIsLogout]=useState(false)
+  const [count,setCount]=useState(1)
 
+  // let UsersDetails = await AsyncStorage.getItem('loginUser');
+  // UsersDetails != null ? JSON.parse(UsersDetails) : null;
+  // console.log('UserDetails', UsersDetails)
+  // const [login,setLogin]=useState()
+  // let UsersDetails = await AsyncStorage.getItem('loginUser');
+  // // UsersDetails != null ? JSON.parse(UsersDetails) : null;
+   useEffect(()=>{
+    getData()
+   },[])
+   var UsersDetails;
+   const getData=async()=>{
+    try {
+       UsersDetails = await AsyncStorage.getItem('loginUser');
+      UsersDetails != null ? JSON.parse(UsersDetails) : null;
+      console.log('UserDetail', UsersDetails)
+      console.log('isLogout', isLogout)
+    
+      setIsLogin(UsersDetails)
+    } catch (error) {
+      
+    }
+    
+  
+   }
+  //   console.log('UserDetails1',
+  //     UsersDetails
+  //   )
+  const handlePress=()=>{
+   setIsLogin(false)
+  }
+  console.log('isLogout', isLogout)
+  console.log('isLogin', isLogin)
   return (
-    <View>
-      {login ? <ProfileSection /> : <Login navigation={navigation} />}
-      {/* <SignUp navigation={navigation}/> */}
-      <Login navigation={navigation} />
+    <View style={{flex:1}}>
+    {  isLogin ? <ProfileSection handlePress={handlePress} /> : <Login navigation={navigation} />}
+      {/* /* <SignUp navigation={navigation}/>
+      <Login navigation={navigation} /> */}
     </View>
   );
 };

@@ -7,7 +7,7 @@ import RootNavigator from './src/Navigator/RootNavigator'
 import LoginState from './src/Context/Login/LoginState';
 import SignUpStatePage from './src/Context/Login/SignUpContext/SignUpStatePage';
 import LikeState from './src/Context/Like/LikeState';
-import { CartProvider, useCart } from "react-use-cart";
+
 import CartState from './src/Context/Cart/CartState';
 
 const App = () => {

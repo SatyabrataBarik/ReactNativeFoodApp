@@ -1,14 +1,16 @@
-import {Image, Pressable, StyleSheet, Text, View} from 'react-native';
-import {useContext} from 'react';
+import { Image, Pressable, StyleSheet, Text, View } from 'react-native';
+import { useContext, useState } from 'react';
 import AntDesign from 'react-native-vector-icons/dist/AntDesign';
 
 import { LikeContext } from '../Context/Like/LikeContext';
-const Product = ({item, navigation}) => {
-  const {handleSet}=useContext(LikeContext)
+const Product = ({ item, navigation }) => {
+
+  const { handleSet, whishList,handleDelete } = useContext(LikeContext)
+  // console.log('whishList', whishList)
   // console.log("product==",item.product)
   let x = item.product;
   const handlePress = (data, navigation) => {
-    navigation.navigate('plp', {data: data, navigation: navigation});
+    navigation.navigate('plp', { data: data, navigation: navigation });
     //  console.log("======",{data})
   };
   return (
@@ -37,28 +39,28 @@ const Product = ({item, navigation}) => {
 
         <View style={Styled.name}>
           {/* <Text style={{color: 'blue'}}>{item.name}</Text> */}
-          <Text style={{color: 'black'}}>{item.time}</Text>
+          <Text style={{ color: 'black' }}>{item.time}</Text>
         </View>
       </View>
       <View>
-        <Text style={{color: '#05061F', fontSize: 20, fontWeight: 500}}>
+        <Text style={{ color: '#05061F', fontSize: 20, fontWeight: 500 }}>
           {item.name}
         </Text>
       </View>
-      <View style={{flexDirection: 'column'}}>
+      <View style={{ flexDirection: 'column' }}>
         <Text>
           <AntDesign name="star" color="orange" />
-          <Text style={{color: 'black', marginLeft: 6}}>
+          <Text style={{ color: 'black', marginLeft: 6 }}>
             {item.ratting}
-            <Pressable onPress={()=>handleSet(item)}>
-              
-              <AntDesign name="hearto" backgroundColor="white" color="red" size={12} />
-            </Pressable>
+            {/* {whishList.find((id)=>id===item.id) ?
+              <Pressable onPress={()=>handleDelete(item.id)}>
+              <AntDesign name='heart' color='red' size={12} /></Pressable>
+            : <Pressable onPress={() => handleSet(item)}><AntDesign name="hearto" color="red" size={12} /></Pressable>  } */}
           </Text>
           <Text>{item.product.catagories}</Text>
         </Text>
       </View>
-      
+
     </View>
   );
 };

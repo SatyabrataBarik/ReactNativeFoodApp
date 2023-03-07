@@ -133,7 +133,7 @@ const Home = ({navigation}) => {
           {/* <View style={Styled.img}><Image source={require("../../Assets/dogs.png")}  resizeMode='contain' style={{width:50}} /></View> */}
         </View>
 
-        <ScrollView>
+        <ScrollView contentContainerStyle={{ flexGrow: 1 }}>
           <View style={{alignItems: 'center', justifyContent: 'space-between'}}>
             <FlatList
               data={data.length != 0 ? data : allProduct}
@@ -143,7 +143,7 @@ const Home = ({navigation}) => {
               }}
             />
           </View>
-          <View style={{height: 300, width: '100%'}}></View>
+          {/* <View style={{height: 300, width: '100%'}}></View> */}
         </ScrollView>
       </View>
     
