@@ -154,7 +154,7 @@ const SinglePage = ({route, navigation}) => {
             <Text style={{color: '#43404F'}}> ....45678</Text>
           </View>
         </View>
-        <TouchableNativeFeedback style={{borderRadius: 12,justifyContent:'center',alignItems:'center'}}>
+        <Pressable style={{borderRadius: 12,justifyContent:'center',alignItems:'center'}} onPress={()=>navigation.navigate('order')}>
           {/* <Button title="Order" borderRadius={12} color="#FC6E3C" /> */}
           <Text
             style={{
@@ -167,11 +167,11 @@ const SinglePage = ({route, navigation}) => {
               fontWeight:'700',
               fontSize:15,
               borderRadius:14,
-              
+               
             }}>
            Order
           </Text>
-        </TouchableNativeFeedback>
+        </Pressable>
       </View>
       </ScrollView>
     </View>

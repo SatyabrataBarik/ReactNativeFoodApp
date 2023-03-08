@@ -1,17 +1,12 @@
-import { Image, Pressable, StyleSheet, Text, View } from 'react-native';
-import { useContext, useState } from 'react';
+import {Image, Pressable, StyleSheet, Text, View} from 'react-native';
+import {useContext, useState} from 'react';
 import AntDesign from 'react-native-vector-icons/dist/AntDesign';
 
-import { LikeContext } from '../Context/Like/LikeContext';
-const Product = ({ item, navigation }) => {
-
-  const { handleSet, whishList,handleDelete } = useContext(LikeContext)
-  // console.log('whishList', whishList)
-  // console.log("product==",item.product)
+import {LikeContext} from '../Context/Like/LikeContext';
+const Product = ({item, navigation}) => {
   let x = item.product;
   const handlePress = (data, navigation) => {
-    navigation.navigate('plp', { data: data, navigation: navigation });
-    //  console.log("======",{data})
+    navigation.navigate('plp', {data: data, navigation: navigation});
   };
   return (
     <View>
@@ -19,14 +14,14 @@ const Product = ({ item, navigation }) => {
         style={{
           flex: 1,
           justifyContent: 'space-between',
-          backgroundColor: '#fff',
+          backgroundColor: '#FFFFFF',
           alignItems: 'center',
           marginTop: 30,
         }}>
         <Pressable onPress={() => handlePress(item.product, navigation)}>
           <Image
             style={{
-              height: 170,
+              height: 160,
               width: 320,
               alignItems: 'center',
               borderRadius: 30,
@@ -38,29 +33,25 @@ const Product = ({ item, navigation }) => {
         </Pressable>
 
         <View style={Styled.name}>
-          {/* <Text style={{color: 'blue'}}>{item.name}</Text> */}
-          <Text style={{ color: 'black' }}>{item.time}</Text>
+          <Text style={{color: 'black'}}>{item.time}</Text>
         </View>
       </View>
       <View>
-        <Text style={{ color: '#05061F', fontSize: 20, fontWeight: 500 }}>
+        <Text style={{color: '#05061F', fontSize: 19, padding: 4}}>
           {item.name}
         </Text>
       </View>
-      <View style={{ flexDirection: 'column' }}>
-        <Text>
-          <AntDesign name="star" color="orange" />
-          <Text style={{ color: 'black', marginLeft: 6 }}>
-            {item.ratting}
-            {/* {whishList.find((id)=>id===item.id) ?
-              <Pressable onPress={()=>handleDelete(item.id)}>
-              <AntDesign name='heart' color='red' size={12} /></Pressable>
-            : <Pressable onPress={() => handleSet(item)}><AntDesign name="hearto" color="red" size={12} /></Pressable>  } */}
-          </Text>
-          <Text>{item.product.catagories}</Text>
-        </Text>
+      <View style={{flexDirection:'row', padding: 4,alignItems:'center' }}>
+   
+         <View ><AntDesign name="star" color="#FC6E3C" /></View> 
+          <View>
+            <Text style={{color: 'black',marginLeft:4}}>{item.ratting}</Text>
+          </View>
+          <View>
+          <Text style={{color: 'black',marginLeft:4}}>-{item.catagories}</Text>
+          </View>
+       
       </View>
-
     </View>
   );
 };
@@ -68,7 +59,7 @@ const Styled = StyleSheet.create({
   name: {
     color: 'red',
     position: 'absolute',
-    backgroundColor: 'white',
+    backgroundColor: '#FDFDFD',
     width: 80,
     height: 40,
     justifyContent: 'center',

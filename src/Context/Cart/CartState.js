@@ -23,6 +23,7 @@ const CartState = props => {
       );
     }
      else {
+      setCartProductCount(cartProductCount+1)
       setData([...data, {...item, quantity: 1}]);
     }
    
@@ -61,7 +62,7 @@ const CartState = props => {
   }
   return (
     <CartContext.Provider
-      value={{data, addToCart, cartProductCount, totalPrice,increases,deleteItem,decrease}}>
+      value={{data, addToCart, cartProductCount, totalPrice,increases,deleteItem,decrease,cartProductCount}}>
       {props.children}
     </CartContext.Provider>
   );

@@ -19,7 +19,7 @@ const Profile = ({navigation}) => {
   // // UsersDetails != null ? JSON.parse(UsersDetails) : null;
    useEffect(()=>{
     getData()
-   },[])
+   },[isLogin])
    var UsersDetails;
    const getData=async()=>{
     try {
@@ -27,7 +27,6 @@ const Profile = ({navigation}) => {
       UsersDetails != null ? JSON.parse(UsersDetails) : null;
       console.log('UserDetail', UsersDetails)
       console.log('isLogout', isLogout)
-    
       setIsLogin(UsersDetails)
     } catch (error) {
       

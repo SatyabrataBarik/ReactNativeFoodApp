@@ -36,15 +36,13 @@ const src = [
 const Home = ({navigation}) => {
   const [data, setData] = useState([]);
   const [selectProduct, setSelectProduct] = useState();
-  const handleClick = k => {
-    setSelectProduct(k.key);
-    let x = allProduct.filter(a => a.fkey == k.key);
-    setData(x);
-    // console.log("==",k)
+  const handleClick = item => {
+    setSelectProduct(item.key);
+    let selectItem = allProduct.filter(allItem => allItem.fkey == item.key);
+    setData(selectItem);
   };
 
   const renderItem = ({item}) => {
-    // console.log('selectProduct == item.id', selectProduct , item)
     return (
       <TouchableNativeFeedback
         style={{
@@ -62,13 +60,12 @@ const Home = ({navigation}) => {
           style={{
             width: 40,
             height: 50,
-
             borderRadius: 25,
             borderColor: 'none',
-            // resizeMode:'contain',
             margin: 8,
             justifyContent: 'center',
             backgroundColor: '#F5F5F6',
+            alignItems:'center'
           }}>
           <Image
             source={item.image}
@@ -89,13 +86,6 @@ const Home = ({navigation}) => {
     );
   };
 
-  // const displayProduct = ({data}) => {
-  //   <Pressable>
-
-  //     <Image source={data.img} resizeMode="contain" style={{height:200,width:200}} />
-  //   </Pressable>;
-  // };
-
   return (
     <SafeAreaView style={Styled.container}>
       <StatusBar barStyle={'light-content'} backgroundColor={'black'} />
@@ -104,18 +94,24 @@ const Home = ({navigation}) => {
           flexDirection: 'row',
           alignItems: 'center',
           justifyContent: 'space-between',
-          padding: 8,
+          padding: 6,
           backgroundColor: '#FEFEFE',
         }}>
         <Pressable>
-          <FontAwesome name="street-view" size={25} color="#030303" />
+          <FontAwesome name="street-view" size={20} color="#030303" />
         </Pressable>
         <View
-          style={{borderWidth:13, borderRadius: 29, borderColor: '#F6F6F6',backgroundColor:'#F6F6F6'}}>
-          <Text style={{fontSize: 17,color:'#0A091C'}}>745 Lincoin PI</Text>
+          style={{
+            width:150,
+            height:33,
+            borderRadius: 29,
+            borderColor: '#F6F6F6',
+            backgroundColor: '#F6F6F6',
+          }}>
+          <Text style={{ color: '#0A091C',textAlign:'center',marginTop:6}}>745 Lincoin PI</Text>
         </View>
         <Pressable onPress={() => navigation.navigate('cart')}>
-          <Fontisto name="shopify" size={25} color="#030303" />
+          <Fontisto name="shopping-basket" size={20} color="#030303" />
         </Pressable>
       </View>
       <View style={{backgroundColor: '#FEFEFE'}}>
@@ -123,17 +119,15 @@ const Home = ({navigation}) => {
           <Text style={Styled.text}>Main </Text>
           <Text style={Styled.text}>Categories</Text>
         </View>
-        <View>
+        <View style={{backgroundColor:'#FDFDFD'}}>
           <FlatList
             horizontal
             keyExtractor={item => item.key}
             data={src}
             renderItem={({item}) => renderItem({item: item})}
           />
-          {/* <View style={Styled.img}><Image source={require("../../Assets/dogs.png")}  resizeMode='contain' style={{width:50}} /></View> */}
         </View>
-
-        <ScrollView contentContainerStyle={{ flexGrow: 1 }}>
+        <ScrollView contentContainerStyle={{flexGrow: 1}} >
           <View style={{alignItems: 'center', justifyContent: 'space-between'}}>
             <FlatList
               data={data.length != 0 ? data : allProduct}
@@ -143,22 +137,20 @@ const Home = ({navigation}) => {
               }}
             />
           </View>
-          {/* <View style={{height: 300, width: '100%'}}></View> */}
         </ScrollView>
       </View>
-    
     </SafeAreaView>
   );
 };
 const Styled = StyleSheet.create({
   container: {
-    flex:1
+    flex: 1,
   },
   text: {
     fontSize: 30,
     color: 'black',
     backgroundColor: '#FEFEFE',
-    marginLeft:13
+    marginLeft: 13,
   },
 
   img: {},

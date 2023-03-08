@@ -9,9 +9,11 @@ import SignUpStatePage from './src/Context/Login/SignUpContext/SignUpStatePage';
 import LikeState from './src/Context/Like/LikeState';
 
 import CartState from './src/Context/Cart/CartState';
+import PaymentState from './src/Context/Payment/PaymentState';
 
 const App = () => {
   return (
+    <PaymentState>
     <CartState>
     <SignUpStatePage>
       <LikeState>
@@ -25,6 +27,7 @@ const App = () => {
  </LikeState>
  </SignUpStatePage>
  </CartState>
+ </PaymentState>
   )
 }
 

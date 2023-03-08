@@ -1,9 +1,36 @@
-import {View, Text, Pressable, Image} from 'react-native';
-import React from 'react';
+import {View, Text, Pressable, Image, StyleSheet} from 'react-native';
+import React, {useContext, useState} from 'react';
 import Ionicons from 'react-native-vector-icons/dist/Ionicons';
 import Entypo from 'react-native-vector-icons/dist/Entypo';
 import {SafeAreaView} from 'react-native-safe-area-context';
+import PaymentMethod from '../Payment/PaymentMethod';
+import PaymentContext from '../Context/Payment/PaymentContext';
+import {FlatList, ScrollView} from 'react-native-gesture-handler';
+
 const Order = ({navigation}) => {
+  const {cardDetails, setPayment, payment, setClickPayment, clickPayment} =
+    useContext(PaymentContext);
+  console.log('cardDetails', cardDetails);
+  console.log('payment.width', payment.width);
+  console.log('payment.height', payment.height);
+  const cardRender = ({item}) => {
+    return (
+      <View
+        style={{
+          borderWidth: 1,
+          height: 90,
+          width: 140,
+          alignItems: 'center',
+          justifyContent: 'center',
+          backfaceVisibility: 'hidden',
+          marginLeft:6
+        }}>
+        <View>
+          <Text style={{fontSize:11,color:'black'}}>card Number: {item.cardNumber}</Text>
+        </View>
+      </View>
+    );
+  };
   return (
     <SafeAreaView>
       <Pressable style={{padding: 12}} onPress={() => navigation.goBack()}>
@@ -31,17 +58,49 @@ const Order = ({navigation}) => {
           flexDirection: 'row',
           justifyContent: 'space-between',
         }}>
-        <Pressable
-          style={{
-            borderWidth: 1,
-            height: 90,
-            width: 140,
-            alignItems: 'center',
-            justifyContent: 'center',
-          }}>
-          <Entypo name="plus"size={30}/>
-        </Pressable>
-        <Pressable style={{borderWidth: 1, height: 90, width: 140}}></Pressable>
+        <ScrollView horizontal={true}>
+          <FlatList
+            horizontal
+            keyExtractor={item => item.index}
+            data={cardDetails}
+            renderItem={cardRender}
+          />
+
+          <Pressable
+            style={{
+              borderWidth: 1,
+              height: 90,
+              width: 140,
+              alignItems: 'center',
+              justifyContent: 'center',
+              backfaceVisibility: 'hidden',
+            }}
+            onPress={() => {
+              return (
+                setPayment({
+                  ...payment,
+                  width: 370,
+                  height: 500,
+                  background: 'visible',
+                }),
+                setClickPayment(true)
+              );
+            }}>
+            <Entypo name="plus" size={30} />
+          </Pressable>
+        </ScrollView>
+      </View>
+      <View
+        style={{
+          height: payment.height,
+          width: payment.width,
+          borderWidth: 1,
+          position: 'absolute',
+          top: 38,
+          left: 12,
+          backgroundColor: '#ffff',
+        }}>
+        <View>{clickPayment && <PaymentMethod payment={payment} />}</View>
       </View>
     </SafeAreaView>
   );
