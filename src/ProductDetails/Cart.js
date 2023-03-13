@@ -10,8 +10,9 @@ import Entypo from 'react-native-vector-icons/dist/Entypo';
 import {ScrollView} from 'react-native-gesture-handler';
 
 const Cart = ({navigation}) => {
-  const {data, increases, decrease, deleteItem,SubTotalMoney} = useContext(CartContext);
-  console.log('data', data);
+  const {data, increases, decrease, deleteItem, SubTotalMoney,totalQuantity} =
+    useContext(CartContext);
+  console.log('data', data.quantity);
   const cartItem = ({item}) => {
     // console.log('Cart', item.Pname)
     return (
@@ -25,7 +26,7 @@ const Cart = ({navigation}) => {
             borderBottomWidth: 1,
             padding: 12,
           }}
-          onPress={()=>navigation.navigate('singlePage',{item:item})}>
+          onPress={() => navigation.navigate('singlePage', {item: item})}>
           <View style={{flexDirection: 'row'}}>
             <Image source={{uri: item.image}} style={{height: 80, width: 80}} />
             <View
@@ -73,7 +74,7 @@ const Cart = ({navigation}) => {
           alignItems: 'center',
           justifyContent: 'space-between',
           backgroundColor: '#ffff',
-          height:39
+          height: 39,
         }}>
         <Pressable style={{padding: 6}} onPress={() => navigation.goBack()}>
           <FontAwesome name="chevron-left" size={16} color="brown" />
@@ -85,12 +86,41 @@ const Cart = ({navigation}) => {
           <Text></Text>
         </View>
       </View>
-      <View style={{alignItems:'center',marginTop:12}}>
-     { data!=''&& <View style={{borderBottomWidth:1,width:"95%",height:80,justifyContent:'space-around'}}>
-        
-        <Text style={{color:'black'}}>Subtotal <FontAwesome name='rupee' color='black'/> {SubTotalMoney()}</Text>
-     <Text style={{color:'green',fontSize:12}}><AntDesign name='checkcircle' size={14} color='green'/> Your order is eligible for FREE Delivery</Text> 
-      </View>}
+      <View style={{alignItems: 'center', marginTop: 12}}>
+        {data != '' && (
+          <View
+            style={{
+              borderBottomWidth: 0.2,
+              width: '95%',
+              height:97,
+              justifyContent: 'space-around',
+            }}>
+            <Text style={{color: 'black'}}>
+              Subtotal <FontAwesome name="rupee" color="black" />
+              {SubTotalMoney()}
+            </Text>
+            <Text style={{color: 'green', fontSize: 12}}>
+              <AntDesign name="checkcircle" size={14} color="green" /> Your
+              order is eligible for FREE Delivery
+            </Text>
+            <View style={{alignItems:'center'}}>
+              <Pressable
+                style={{
+                  width: '80%',
+                  height: 36,
+                
+                  alignItems: 'center',
+                  justifyContent:'center',
+                  backgroundColor:'#FFD700'
+                }}
+                onPress={()=>navigation.navigate('order')}
+    
+                >
+                <Text style={{color:'black'}}> Proceed to Buy({totalQuantity()} item) </Text>
+              </Pressable>
+            </View>
+          </View>
+        )}
       </View>
       {data == '' ? (
         <View
@@ -100,7 +130,7 @@ const Cart = ({navigation}) => {
             alignContent: 'center',
             height: '100%',
           }}>
-          <Text style={{color:'black',fontSize:23}}>Cart is Empty</Text>
+          <Text style={{color: 'black', fontSize: 23}}>Cart is Empty</Text>
           {/* <Pressable onPress={navigation.navigate('search')}><Text style={{color:'green'}}>click for Buy</Text></Pressable> */}
         </View>
       ) : (

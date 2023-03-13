@@ -54,7 +54,7 @@ const Home = ({navigation}) => {
           alignItems: 'center',
           primary: 'white',
           borderRadius: 40,
-          elevation:2,
+          elevation:3,
           height:100
         }}
         onPress={() => handleClick(item)}>
@@ -99,21 +99,22 @@ const Home = ({navigation}) => {
             alignItems: 'center',
             justifyContent: 'space-between',
             
-            backgroundColor: '#FEFEFE',
+            backgroundColor: '#FFFFFF',
           }}>
           <Pressable>
             <FontAwesome name="street-view" size={20} color="#030303" />
           </Pressable>
           <View
             style={{
-              width: 150,
-              height: 37,
+              width: 140,
+              height: 40,
               borderRadius: 29,
-              borderColor: '#F6F6F6',
+             
               backgroundColor: '#F6F6F6',
-              elevation:3
+              elevation:6,
+              borderBottomWidth:0.1
             }}>
-            <Text style={{color: '#0A091C', textAlign: 'center', marginTop: 7,}}>
+            <Text style={{color: '#0A091C', textAlign: 'center', marginTop: 7}}>
               745 Lincoin PI
             </Text>
           </View>

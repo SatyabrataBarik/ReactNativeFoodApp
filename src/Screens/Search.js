@@ -80,6 +80,7 @@ const Search = ({navigation}) => {
       <View>
         <View style={{marginTop: 30}}>
           <FlatList
+             showsVerticalScrollIndicator={false}
             data={filterData ? filterData : allProduct}
             renderItem={itemRender}
           />

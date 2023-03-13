@@ -9,7 +9,7 @@ import { TouchableNativeFeedback } from 'react-native-gesture-handler';
 
 const SinglePage = ({route, navigation}) => {
   const {item} = route.params;
-  const {cartProductCount, totalPrice} = useContext(CartContext);
+  const {cartProductCount, totalPrice,totalQuantity,SubTotalMoney} = useContext(CartContext);
 
   const [count, setCount] = useState(1);
   const [money, setMoney] = useState(item.Price);
@@ -75,13 +75,14 @@ const SinglePage = ({route, navigation}) => {
         <View
           style={{
             height: 36,
-            width: 86,
+            width: 120,
             top: -9,
             backgroundColor: '#FFFFFF',
             borderRadius: 12,
             flexDirection: 'row',
             justifyContent: 'space-between',
             alignItems: 'center',
+            elevation:2
           }}>
           <Pressable onPress={decrement}>
             <Entypo name="minus" size={30} />
@@ -133,9 +134,11 @@ const SinglePage = ({route, navigation}) => {
             padding: 25,
           }}>
           <Text style={{color: '#545461', fontSize: 15, fontWeight: 700}}>
-            {cartProductCount} items in cart
+       
+      
+            {totalQuantity()} items in cart
           </Text>
-          <Text>Rs:{totalPrice}</Text>
+          <Text style={{color:'black'}}>Rs:{SubTotalMoney()}</Text>
         </View>
         <View
           style={{
