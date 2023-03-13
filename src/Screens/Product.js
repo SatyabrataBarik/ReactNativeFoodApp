@@ -1,8 +1,8 @@
 import {Image, Pressable, StyleSheet, Text, View} from 'react-native';
-import {useContext, useState} from 'react';
+
 import AntDesign from 'react-native-vector-icons/dist/AntDesign';
 
-import {LikeContext} from '../Context/Like/LikeContext';
+
 const Product = ({item, navigation}) => {
   let x = item.product;
   const handlePress = (data, navigation) => {
@@ -15,16 +15,20 @@ const Product = ({item, navigation}) => {
           flex: 1,
           justifyContent: 'space-between',
           backgroundColor: '#FFFFFF',
-          alignItems: 'center',
+          // alignItems: 'center',
           marginTop: 30,
+          // elevation:1,
+          borderRadius: 30,
+              
         }}>
-        <Pressable onPress={() => handlePress(item.product, navigation)}>
+        <Pressable onPress={() => handlePress(item.product, navigation)} style={{   height: 170, width: 350,elevation:4}}>
           <Image
             style={{
-              height: 160,
-              width: 320,
+              height: 170,
+              width: 350,
               alignItems: 'center',
               borderRadius: 30,
+              
             }}
             source={{
               uri: item.image,
@@ -61,7 +65,7 @@ const Styled = StyleSheet.create({
     position: 'absolute',
     backgroundColor: '#FDFDFD',
     width: 80,
-    height: 40,
+    height: 46,
     justifyContent: 'center',
     left: 0,
     top: 130,

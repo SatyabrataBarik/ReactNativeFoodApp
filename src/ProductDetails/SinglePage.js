@@ -40,27 +40,30 @@ const SinglePage = ({route, navigation}) => {
           flexDirection: 'row',
           justifyContent: 'space-between',
           padding: 3,
+          alignItems:'center'
         }}>
         <Pressable
           onPress={() => {
             navigation.goBack();
           }}>
-          <Ionicons name="md-arrow-back-outline" size={30} color={'black'} />
+          <Ionicons name="md-arrow-back-outline" size={25} color={'black'} />
         </Pressable>
         <Text
           style={{
             backgroundColor: '#DDDEE9',
-            color: '#9C9CAD',
-            fontSize: 20,
+            color: '#0D0C22',
+            fontSize: 12,
             width: 120,
-            borderRadius: 12,
+            borderRadius: 10,
             textAlign: 'center',
             padding: 4,
+            height:28,
+            alignItems:'center'
           }}>
           {item.catagories}
         </Text>
         <View>
-          <Entypo name="chat" size={35} color={'green'} />
+          <FontAwesome name="list-ul" size={20} color={''} />
         </View>
       </View>
    <ScrollView>

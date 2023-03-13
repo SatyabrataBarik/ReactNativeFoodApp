@@ -9,7 +9,7 @@ const PaymentMethod = () => {
         cvv:"",
         Exp:''
     })
-    const {addPaymentCard,payment}=useContext(PaymentContext)
+    const {addPaymentCard,payment,cancelPaymentCard}=useContext(PaymentContext)
     const [error,setError]=useState({
         cardError:false,
         NameError:false,
@@ -119,7 +119,7 @@ const PaymentMethod = () => {
            <View>{error.CvvError && <Text style={{color:'red'}}>invalid Cvv</Text>}</View>
            </View>
       </View>
-      <View style={{alignItems: 'center'}}>
+      <View style={{alignItems: 'center' ,flexDirection:'row',justifyContent:'center',padding:5}}>
         <Pressable
           style={{
             width: 80,
@@ -127,9 +127,21 @@ const PaymentMethod = () => {
             height: 30,
             justifyContent: 'center',
             backgroundColor: 'green',
+            margin:5
           }}
           onPress={()=>addPaymentCard(paymentDetails,error)}>
           <Text style={{color: '#ffff'}}>Add</Text>
+        </Pressable>
+        <Pressable
+          style={{
+            width: 80,
+            alignItems: 'center',
+            height: 30,
+            justifyContent: 'center',
+            backgroundColor: 'red',
+          }}
+          onPress={()=>cancelPaymentCard()}>
+          <Text style={{color: '#ffff'}}>cancel</Text>
         </Pressable>
       </View>
     </View>

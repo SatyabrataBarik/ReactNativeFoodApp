@@ -27,6 +27,9 @@ const PaymentState = props => {
     setCardDetails([...cardDetails, paymentDetails]);
     }
   };
+  const cancelPaymentCard=()=>{
+    setPayment({...payment, width: 0, height: 0}), setClickPayment(false);
+  }
   return (
     <PaymentContext.Provider
       value={{
@@ -37,6 +40,7 @@ const PaymentState = props => {
         setPayment,
         setClickPayment,
         clickPayment,
+        cancelPaymentCard
       }}>
       {props.children}
     </PaymentContext.Provider>

@@ -31,7 +31,7 @@ const Like = ({navigation}) => {
                 onPress={() => navigation.navigate('singlePage', {item: value})}
                 key={i}>
                 <View style={Liked.main}>
-                  <Text style={{marginLeft: 15}}>{value.Pname}</Text>
+                  <Text style={{marginLeft: 15,color:'blue'}}>{value.Pname}</Text>
                   <Image
                     source={{uri: value.image}}
                     style={{height: 120, width: 120}}
@@ -40,13 +40,13 @@ const Like = ({navigation}) => {
               </Pressable>
             
             <Pressable onPress={()=>handleDelete(value.id)} style={Liked.delete}>
-              <AntDesign name="delete" size={20} />
+              <AntDesign name="delete" size={20} color='red' />
             </Pressable> 
             <Pressable  style={Liked.cart} onPress={()=>{return (
               addToCart(value),
               handleDelete(value.id)
             )}}>
-              <Text>Add To Cart</Text>
+              <Text style={{color:'green'}}>Add To Cart</Text>
             </Pressable>
             </View>
           );

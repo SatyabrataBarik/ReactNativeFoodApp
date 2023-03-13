@@ -87,6 +87,10 @@ def reactNativeArchitectures() {
     def value = project.getProperties().get("reactNativeArchitectures")
     return value ? value.split(",") : ["armeabi-v7a", "x86", "x86_64", "arm64-v8a"]
 }
+project.ext.react = [
+    enableHermes: true,
+    hermesFlagsRelease: ["-O", "-output-source-map"], // plus whichever flag was required to set this away from default
+]
 
 android {
     ndkVersion rootProject.ext.ndkVersion

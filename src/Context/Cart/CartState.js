@@ -1,4 +1,4 @@
-import {View, Text} from 'react-native';
+import {View, Text, Alert} from 'react-native';
 import {useState, useRef} from 'react';
 import CartContext from './CartContext';
 
@@ -8,6 +8,7 @@ const CartState = props => {
   const [cartProductCount, setCartProductCount] = useState(0);
    
   const addToCart = item => {
+    Alert.alert(`${item.Pname} add to cart`)
     console.log('item', item)
     console.log('hii')
     const existingItem = data.find(food => food.id == item.id);
@@ -60,9 +61,18 @@ const CartState = props => {
   const deleteItem=(item)=>{
      setData(data.filter((foodItem)=>foodItem.id!=item.id))
   }
+  const SubTotalMoney=()=>{
+    let subTotal=0;
+    if(data!=''){
+      data.forEach((item)=>subTotal+=item.Price*item.quantity)
+     
+    }
+    console.log('SubTotal', subTotal)
+    return subTotal
+  }
   return (
     <CartContext.Provider
-      value={{data, addToCart, cartProductCount, totalPrice,increases,deleteItem,decrease,cartProductCount}}>
+      value={{data, addToCart, cartProductCount, totalPrice,increases,deleteItem,decrease,cartProductCount,SubTotalMoney}}>
       {props.children}
     </CartContext.Provider>
   );

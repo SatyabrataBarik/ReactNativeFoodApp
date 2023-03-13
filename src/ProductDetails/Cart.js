@@ -10,13 +10,13 @@ import Entypo from 'react-native-vector-icons/dist/Entypo';
 import {ScrollView} from 'react-native-gesture-handler';
 
 const Cart = ({navigation}) => {
-  const {data, increases, decrease, deleteItem} = useContext(CartContext);
+  const {data, increases, decrease, deleteItem,SubTotalMoney} = useContext(CartContext);
   console.log('data', data);
   const cartItem = ({item}) => {
     // console.log('Cart', item.Pname)
     return (
       <View style={{flex: 1, alignItems: 'center'}}>
-        <View
+        <Pressable
           style={{
             width: '90%',
             backgroundColor: '#ffff',
@@ -25,7 +25,7 @@ const Cart = ({navigation}) => {
             borderBottomWidth: 1,
             padding: 12,
           }}
-          onTo>
+          onPress={()=>navigation.navigate('singlePage',{item:item})}>
           <View style={{flexDirection: 'row'}}>
             <Image source={{uri: item.image}} style={{height: 80, width: 80}} />
             <View
@@ -61,7 +61,7 @@ const Cart = ({navigation}) => {
             onPress={() => deleteItem(item)}>
             <Entypo name="trash" color="red" size={18} />
           </Pressable>
-        </View>
+        </Pressable>
       </View>
     );
   };
@@ -84,6 +84,13 @@ const Cart = ({navigation}) => {
         <View>
           <Text></Text>
         </View>
+      </View>
+      <View style={{alignItems:'center',marginTop:12}}>
+     { data!=''&& <View style={{borderBottomWidth:1,width:"95%",height:80,justifyContent:'space-around'}}>
+        
+        <Text style={{color:'black'}}>Subtotal <FontAwesome name='rupee' color='black'/> {SubTotalMoney()}</Text>
+     <Text style={{color:'green',fontSize:12}}><AntDesign name='checkcircle' size={14} color='green'/> Your order is eligible for FREE Delivery</Text> 
+      </View>}
       </View>
       {data == '' ? (
         <View
