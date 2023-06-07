@@ -3,12 +3,12 @@ import {useContext} from 'react';
 import Ratting from './Ratting';
 import {TouchableOpacity} from 'react-native-gesture-handler';
 import CartContext from '../Context/Cart/CartContext';
-import { LikeContext } from '../Context/Like/LikeContext';
+import {LikeContext} from '../Context/Like/LikeContext';
 import AntDesign from 'react-native-vector-icons/dist/AntDesign';
 const ProductIterable = ({item, navigation}) => {
- const {addToCart}=useContext(CartContext)
- const { handleSet, whishList,handleDelete } = useContext(LikeContext)
- console.log('addToCart[0]', addToCart)
+  const {addToCart} = useContext(CartContext);
+  const {handleSet, whishList, handleDelete} = useContext(LikeContext);
+  console.log('addToCart[0]', addToCart);
 
   // console.log('navigation', navigation)
   const handlePress = item => {
@@ -24,7 +24,6 @@ const ProductIterable = ({item, navigation}) => {
             <Ratting rate={item.ratting} />
           </Text>
           <Text style={{color: 'black'}}>Price:{item.Price}</Text>
-          
         </View>
         <Image
           source={{uri: item.image}}
@@ -32,24 +31,31 @@ const ProductIterable = ({item, navigation}) => {
         />
       </Pressable>
       <View
-            style={{
-              marginTop: 5,
-              flexDirection: 'row',
-              justifyContent: 'space-around',
-              alignItems:'center'
-            }}>
-            <TouchableOpacity onPress={() => addToCart(item)}>
-          
-              <Text style={{color:'green'}}>AddToCart</Text>
-            </TouchableOpacity >
-            <TouchableOpacity  onPress={() => navigation.navigate('order',{navigation:navigation})}> 
-            <Text  style={{color:'blue'}}>order</Text>
-            </TouchableOpacity>
-            {whishList.find((id)=>id===item.id) ?
-              <Pressable onPress={()=>handleDelete(item.id)}>
-              <AntDesign name='heart' color='red' size={15} /></Pressable>
-            : <Pressable onPress={() => handleSet(item)}><AntDesign name="hearto" color="red" size={15} /></Pressable>  }
-          </View>
+        style={{
+          marginTop: 5,
+          flexDirection: 'row',
+          justifyContent: 'space-around',
+          alignItems: 'center',
+        }}>
+        <TouchableOpacity onPress={() => addToCart(item)}>
+          <Text style={{color: 'green'}}>AddToCart</Text>
+        </TouchableOpacity>
+        <TouchableOpacity
+          onPress={() =>
+            navigation.navigate('order', {navigation: navigation})
+          }>
+          <Text style={{color: 'blue'}}>order</Text>
+        </TouchableOpacity>
+        {whishList.find(id => id === item.id) ? (
+          <Pressable onPress={() => handleDelete(item.id)}>
+            <AntDesign name="heart" color="red" size={15} />
+          </Pressable>
+        ) : (
+          <Pressable onPress={() => handleSet(item)}>
+            <AntDesign name="hearto" color="red" size={15} />
+          </Pressable>
+        )}
+      </View>
     </View>
   );
 };

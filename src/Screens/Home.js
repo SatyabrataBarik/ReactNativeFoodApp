@@ -108,13 +108,13 @@ const Home = ({navigation}) => {
             style={{
               width: 140,
               height: 40,
-              borderRadius: 29,
+              borderRadius: 12,
              
               backgroundColor: '#F6F6F6',
-              elevation:6,
-              borderBottomWidth:0.1
+              elevation:4,
+              // borderWidth:0.1
             }}>
-            <Text style={{color: '#0A091C', textAlign: 'center', marginTop: 7}}>
+            <Text style={{color: '#0A091C', textAlign: 'center', marginTop: 9}}>
               745 Lincoin PI
             </Text>
           </View>

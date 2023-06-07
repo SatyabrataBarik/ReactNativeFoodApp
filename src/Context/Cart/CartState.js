@@ -26,9 +26,6 @@ const CartState = props => {
     }
   };
   const increases = item => {
-    // const existingItem = data.find(food => food.id == item.id);
-    // if(existingItem)
-    console.log('item.id', item.id);
     setData(
       data.map(existingFood =>
         existingFood.id === item.id
@@ -38,15 +35,14 @@ const CartState = props => {
     );
   };
   const decrease = item => {
-    // const existingItem = data.find(food => food.id == item.id);
-    // if(existingItem)
-    console.log('item.id', item.id);
-    if (item.quantity <= 1) {
-      setData(existingFood =>
-        existingFood.id === item.id
-          ? {...existingFood, quantity: 1}
-          : existingFood,
-      );
+ 
+    if (item.quantity <=1) {
+      // setData(existingFood =>
+      //   existingFood.id === item.id
+      //     ? {...existingFood, quantity: 1}
+      //     : existingFood,
+      // );
+        deleteItem(item)
     } else {
       setData(
         data.map(existingFood =>
